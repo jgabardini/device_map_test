@@ -1,16 +1,10 @@
 import requests
 import re
+import csv
 
-# http://www.useragentstring.com/pages/useragentstring.php
-# http://user-agent-string.info/list-of-ua
-UA = [
-	# Chrome
-	'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36',
-	'NOKIAN82 UCWEB',
-]
 
-CHROME_UA = UA[0]
-URL_MOBILE = 'http://m.olx.com.ar/'
+CHROME_UA = 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36'
+URL_MOBILE = 'http://m.yoursite.com.ar/'
 
 
 class DocType:
@@ -37,16 +31,28 @@ class DocType:
 	def is_html5(self):
 		return -1 < self.doctype().lower() == '<!doctype html>'
 
+	def is_languaje(self, languaje):
+		return	self.is_wap() if languaje == 'WAP' else \
+				self.is_html4() if languaje == 'HTML4' else \
+				self.is_html5() if languaje == 'HTML5' else \
+				False
 
 def map_device(url=URL_MOBILE, user_agent=CHROME_UA):
 	header = {
 		'User-Agent': user_agent  
 	}
 	r = requests.get(url=url, headers=header)
- 	
-		# print '-' * 10
-		# print r.headers
-		# print r.history
 	return r
 
+def test_UAs():
+	with open('user-agents.csv', 'rb') as uafile:
+		uareader = csv.reader(uafile)
+		for uarow in uareader:
+			if uarow[0] != '#':	
+				yield check_ua, uarow[1], uarow[0]
+
+def check_ua(ua, languaje):
+	response = map_device(user_agent=ua)
+	dt = DocType(response.text)
+	assert dt.is_languaje(languaje)
 
