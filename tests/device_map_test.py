@@ -79,7 +79,11 @@ class DeviceMap_DocType(unittest.TestCase):
 		dt = DocType(HTML5_TEXT)
 		self.assertTrue(dt.is_languaje('HTML5'), "Not a HTML5:" + dt.doctype())
 	
-	def test_is_languaje_unknown(self):
+	def test_is_not_languaje_unknown(self):
 		dt = DocType(HTML5_TEXT)
-		self.assertTrue(dt.is_languaje('unknown'), "Lenguaje unknown should be false:" + dt.doctype())
+		self.assertFalse(dt.is_languaje('unknown'), "Lenguaje unknown should be false:" + dt.doctype())
+
+	def test_is_languaje_unknown(self):
+		dt = DocType("<!foo><html></html>")
+		self.assertTrue(dt.is_languaje('unknown'))
 
