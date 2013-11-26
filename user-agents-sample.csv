@@ -1,8 +1,12 @@
+#,IE
+WAP,"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)"
+#,FF
+WAP,"Mozilla/5.0 (Windows NT 6.1; Intel Mac OS X 10.6; rv:7.0.1) Gecko/20100101 Firefox/7.0.1"
 #,Symbian
 WAP,"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36"
 WAP,"UCWEB/2.0(Symbian; U; S60 V3; en-US; NokiaE71) U2/1.0.0 UCBrowser/8.9.0.277 U2/1.0.0 Mobile"
 WAP,"UCWEB/2.0(Symbian; U; S60 V5; en-US; Nokia5230) U2/1.0.0 UCBrowser/8.8.1.252 U2/1.0.0 Mobile"
-#,Androir
+#,Android
 HTML4,"Mozilla/5.0 (Linux; U; Android 4.1.1; en-US; SCH-I759 Build/JDO03L) AppleWebKit/534.31 (KHTML,like Gecko) UCBrowser/9.0.1.275 U3/0.8.0 Mobile Safari/534.31"
 WAP,"UCWEB/2.0 (Linux; U; Android 4.1.1; en-US; SCH-I579) U2/1.0.0 UCBrowser/9.0.1.275 U2/1.0.0 Mobile"
 HTML4,"Opera/9.80 (Android; Opera Mini/7.28879/27.1662; U; en-us) Presto/2.8.119 Version/11.10 UCBrowser/8.6.1.262/145/352/"
