@@ -4,7 +4,8 @@ import csv
 
 
 CHROME_UA = 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36'
-
+UA_FILENAME="ua.csv"
+URL_MOBILE="http://lanacion.com.ar"
 
 class DocType:
 	
@@ -61,7 +62,7 @@ def detect_lang(ua):
 	)
 
 def check_ua(ua, languaje):
-	response = map_device(user_agent=ua)
+	response = map_device(url=URL_MOBILE,user_agent=ua)
 	dt = DocType(response.text)
 	assert dt.is_languaje(languaje)
 
