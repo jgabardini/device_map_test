@@ -8,7 +8,7 @@ UA_FILENAME="ua.csv"
 URL_MOBILE="http://lanacion.com.ar"
 
 class DocType:
-	
+
 	def __init__(self, text):
 		self.text = text
 
@@ -39,7 +39,7 @@ class DocType:
 
 def map_device(url, user_agent=CHROME_UA):
 	header = {
-		'User-Agent': user_agent  
+		'User-Agent': user_agent
 	}
 	r = requests.get(url=url, headers=header)
 	return r
@@ -48,7 +48,7 @@ def test_UAs():
 	with open(UA_FILENAME, 'rb') as uafile:
 		uareader = csv.reader(uafile)
 		for uarow in uareader:
-			if uarow[0] != '#':	
+			if uarow[0] != '#':
 				yield check_ua, uarow[1], uarow[0]
 
 def detect_lang(ua):
@@ -82,5 +82,7 @@ if __name__ == "__main__":
 	if args.detect:
 		for f, ua, languaje in test_UAs():
 			print '%s,"%s"' % (detect_lang(ua), ua)
-
-
+	else:
+		for f, ua, languaje in test_UAs():
+			if languaje!=detect_lang(ua):
+				print detect_lang(ua), languaje, ua
